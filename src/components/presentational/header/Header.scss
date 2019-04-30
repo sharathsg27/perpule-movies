@@ -1,0 +1,23 @@
+.header {
+  display: grid;
+  align-items: center;
+  align-content: center;
+  justify-content: space-between;
+  position: fixed;
+  grid-template-areas: "header-name search";
+  grid-template-columns: auto auto;
+  margin: 0 auto;
+  height: 60px;
+  width: 100%;
+  padding: 10px 25px;
+  background: #1A242F;
+  z-index: 5;
+
+  .header-name {
+    color: #fff;
+    font-weight: 600;
+    line-height: 1.5;
+    font-size: 2rem;
+    grid-area: header-name / header-name / header-name / header-name;
+  }
+}
