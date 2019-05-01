@@ -1,0 +1,21 @@
+.action-buttons {
+  position: relative;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+
+  .page-number {
+    display: block;
+    min-width: 30px;
+    font-weight: 600;
+    font-size: 1.3rem;
+    color: #fff;
+    margin: 0 5px;
+    text-align: center;
+  }
+
+  .action-icon {
+    margin: 0 10px;
+  }
+
+}

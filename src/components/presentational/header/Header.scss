@@ -3,15 +3,19 @@
   align-items: center;
   align-content: center;
   justify-content: space-between;
-  position: fixed;
   grid-template-areas: "header-name search";
-  grid-template-columns: auto auto;
+  grid-template-rows: 65px;
   margin: 0 auto;
-  height: 60px;
   width: 100%;
-  padding: 10px 25px;
-  background: #1A242F;
+  padding: 10px 35px;
   z-index: 5;
+  position: fixed;
+  background: #0F161D;
+
+  .brand-icon {
+    margin-right: 10px;
+    color: #51b99d;
+  }
 
   .header-name {
     color: #fff;
@@ -19,5 +23,25 @@
     line-height: 1.5;
     font-size: 2rem;
     grid-area: header-name / header-name / header-name / header-name;
+    font-family: Roboto, sans-serif;
+  }
+}
+
+// Responsive Grid settings
+@media screen and (max-width: 600px) {
+  .header {
+    grid-template-areas: "header-name search";
+    grid-template-columns: 1fr 1fr;
+  }
+}
+
+@media screen and (max-width: 500px) {
+  .header {
+    grid-template-areas: "search";
+    grid-template-columns: 1fr;
+  }
+
+  .header-name {
+    display: none;
   }
 }

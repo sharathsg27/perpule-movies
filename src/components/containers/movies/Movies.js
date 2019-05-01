@@ -3,6 +3,9 @@ import './Movies.scss';
 import {connect} from "react-redux";
 import {fetchMovies} from "../../../actions/moviesAction";
 import {setPagination} from "../../../actions/PaginationAction";
+import {paginationService} from "../../../utils/utils";
+import {faCaretRight, faFilm} from "@fortawesome/free-solid-svg-icons";
+import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
 
 
 class Movies extends Component {
@@ -12,50 +15,34 @@ class Movies extends Component {
 
     render() {
         const paginationOptions = this.props.paginationOptions;
+        const displayMovies = paginationService(paginationOptions, this.props.movies);
 
-        // Pagination
-        let displayMovies = [];
-        let originalMovies = Array.from(this.props.movies);
-
-
-        if (paginationOptions) {
-            let startIndex = 0;
-            let endIndex = paginationOptions.recordsPerPage * paginationOptions.currentPage;
-
-            if (paginationOptions.currentPage === 1) {
-                displayMovies = originalMovies.slice(0, endIndex);
-            } else if (paginationOptions.currentPage === 2) {
-                startIndex = paginationOptions.recordsPerPage;
-                displayMovies = originalMovies.slice(startIndex, endIndex);
-            } else if (paginationOptions.currentPage > 2) {
-                startIndex = (paginationOptions.recordsPerPage * paginationOptions.currentPage) - paginationOptions.recordsPerPage;
-                displayMovies = originalMovies.slice(startIndex, endIndex)
-            }
-        }
-
-
-        const movies = displayMovies ? displayMovies.map(movie => (
-            <div className={'card'} key={movie.imdbID}>
-                <article>
-                    <div className="card-image-container">
-                        <img src={movie.Poster} className={'img-loaded'} alt={''}/>
-                    </div>
-                    <div className={'card-details'}>
-                        <div className={'title'}>{movie.Title}</div>
-                        <div className="sub-info">
-                            {movie.Year}
+        return displayMovies ? <div className="movies-list"> {displayMovies.map(movie => (
+                <div className={'card'} key={movie.imdbID}>
+                    <article>
+                        <div className="card-image-container">
+                            <img src={movie.Poster} className={'img-loaded'} alt={''}/>
                         </div>
-                    </div>
-                </article>
-            </div>
-        )) : 'No movies found';
-        return (
-            <div>
-                {movies}
-            </div>
-        );
+                        <div className={'card-details'}>
+                            <div className={'title'}>
+                                <FontAwesomeIcon icon={faFilm} className="film-icon"/>
+                                <span className="film-name">{movie.Title}</span>
+                            </div>
+                            <div className="sub-info">
+                                <FontAwesomeIcon icon={faCaretRight} className="year-icon"/>
+                                <span className="film-year">{movie.Year}</span>
+                            </div>
+                        </div>
+                    </article>
+                </div>
+            ))}
+            </div> :
+            <div className="no-movies">
+                <FontAwesomeIcon icon={faFilm} className="loading-icon"/>
+            </div>;
     }
 }
+
 
 const mapStateToProps = state => ({
     movies: state.movies.items,

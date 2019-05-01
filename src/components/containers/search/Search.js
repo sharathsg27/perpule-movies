@@ -2,13 +2,15 @@ import React, {Component} from 'react';
 import './Search.scss';
 import {connect} from "react-redux";
 import {searchMovies} from "../../../actions/SearchAction";
-import {debounce} from "../../../utils/utils";
+import {debounceservice} from "../../../utils/utils";
+import {FontAwesomeIcon} from '@fortawesome/react-fontawesome'
+import {faSearch} from "@fortawesome/free-solid-svg-icons";
 
 class Search extends Component {
 
     constructor(props) {
         super(props);
-        this.callDebounceSearch = debounce(this.props.searchMovies, 500);
+        this.callDebounceSearch = debounceservice(this.props.searchMovies, 300);
     }
 
     getMovieByTitle = (e) => {
@@ -24,6 +26,9 @@ class Search extends Component {
                        className={'search-box'}
                        onKeyUp={this.getMovieByTitle}
                 />
+                <div className="search-icon-container">
+                    <FontAwesomeIcon className="search-icon" icon={faSearch}/>
+                </div>
             </div>
         );
     }

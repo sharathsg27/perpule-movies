@@ -1,0 +1,19 @@
+.footer {
+  display: grid;
+  align-items: center;
+  align-content: center;
+  justify-content: center;
+  grid-template-areas: "pagination";
+  grid-template-rows: 65px;
+  margin: 0 auto;
+  width: 100%;
+  z-index: 5;
+  background: #0F161D;
+  position: fixed;
+  left: 0;
+  bottom: 0;
+
+  .pagination {
+    grid-area: pagination / pagination / pagination / pagination;
+  }
+}
