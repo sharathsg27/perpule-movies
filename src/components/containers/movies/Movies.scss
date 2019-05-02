@@ -1,3 +1,5 @@
+@import "../../../utils/styles/variables";
+
 .movies-list {
   display: inline-block;
   padding: 20px 45px;
@@ -13,7 +15,7 @@
 
     .film-name {
       font-size: 0.7em;
-      font-weight: 600;
+      font-weight: $font-weight-600;
       vertical-align: middle;
     }
   }

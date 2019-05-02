@@ -3,7 +3,7 @@ import './Movies.scss';
 import {connect} from "react-redux";
 import {fetchMovies} from "../../../actions/moviesAction";
 import {setPagination} from "../../../actions/PaginationAction";
-import {paginationService} from "../../../utils/utils";
+import {paginationService} from "../../../utils/js/service";
 import {faCaretRight, faFilm} from "@fortawesome/free-solid-svg-icons";
 import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
 

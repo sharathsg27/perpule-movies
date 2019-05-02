@@ -13,12 +13,3 @@ body {
 *, *:before, *:after {
   box-sizing: border-box;
 }
-
-@keyframes MoveUpDown {
-  0%, 100% {
-    bottom: 0;
-  }
-  50% {
-    bottom: 25px;
-  }
-}

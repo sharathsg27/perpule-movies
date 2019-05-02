@@ -2,7 +2,7 @@ import React, {Component} from 'react';
 import './Search.scss';
 import {connect} from "react-redux";
 import {searchMovies} from "../../../actions/SearchAction";
-import {debounceservice} from "../../../utils/utils";
+import {debounceservice} from "../../../utils/js/service";
 import {FontAwesomeIcon} from '@fortawesome/react-fontawesome'
 import {faSearch} from "@fortawesome/free-solid-svg-icons";
 
